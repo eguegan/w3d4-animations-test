@@ -19,7 +19,7 @@
             android:id="@+id/btn_1"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="FadeOut"
+            android:text="Fade Out"
             android:onClick="fadeOut"
             android:layout_weight="1"/>
         <Button
@@ -29,7 +29,64 @@
             android:text="Fall"
             android:onClick="fall"
             android:layout_weight="1"/>
+        <Button
+            android:id="@+id/btn_3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Strech and Color"
+            android:onClick="strechAndColor"
+            android:layout_weight="1"/>
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_4"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="XML Fade Out"
+            android:onClick="fadeOutXML"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/btn_5"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Multi XML"
+            android:onClick="multiXML"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_6"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Fade Out"
+            android:onClick="fadeOut"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/btn_7"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Fall"
+            android:onClick="fall"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/btn_8"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Value Animator"
+            android:onClick="strechAndColor"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
 </LinearLayout>
