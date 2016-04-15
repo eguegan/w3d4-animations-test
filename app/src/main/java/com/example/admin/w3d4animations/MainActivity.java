@@ -10,7 +10,10 @@ import android.animation.ValueAnimator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.animation.BounceInterpolator;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -20,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
     private Button mButtonStrechAndColor;
     private Button mButtonFadeXml;
     private Button mButtonMultiXml;
+    private Button mButtonValueAnimator;
+    private Button mButtonViewAnimation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
         mButtonStrechAndColor = (Button) findViewById(R.id.btn_3);
         mButtonFadeXml = (Button) findViewById(R.id.btn_4);
         mButtonMultiXml = (Button) findViewById(R.id.btn_5);
+        mButtonValueAnimator = (Button) findViewById(R.id.btn_6);
+        mButtonViewAnimation = (Button) findViewById(R.id.btn_7);
     }
 
     public void fadeOut(View view) {
@@ -85,5 +92,51 @@ public class MainActivity extends AppCompatActivity {
             };
         });
         anim.start();
+    }
+
+    public void valueAnimator(View view) {
+        // Construct the value animator and define the range
+        ValueAnimator valueAnim = ValueAnimator.ofFloat(0, 1);
+        valueAnim.setTarget(mButtonValueAnimator);
+        // Animate over the course of 700 milliseconds
+        valueAnim.setDuration(700);
+        // Choose an interpolator
+        valueAnim.setInterpolator(new DecelerateInterpolator());
+        // Define how to update the view at each "step" of the animation
+        valueAnim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                float animatedValue = (float) animation.getAnimatedValue();
+                // Use the animated value to affect the view
+            }
+        });
+        // Start the animation if not already running
+        if (!valueAnim.isStarted()) {
+            valueAnim.start();
+        }
+    }
+
+    public void viewAnimation(View view) {
+        // Inflate animation from XML
+        Animation animFadeOut = AnimationUtils.loadAnimation(this, R.anim.fade_out);
+        // Setup listeners (optional)
+        animFadeOut.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+                // Fires when animation starts
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                // ...
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+                // ...
+            }
+        });
+        // start the animation
+        mButtonViewAnimation.startAnimation(animFadeOut);
     }
 }

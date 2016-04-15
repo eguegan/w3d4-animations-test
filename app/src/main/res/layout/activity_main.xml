@@ -70,22 +70,22 @@
             android:id="@+id/btn_6"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Fade Out"
-            android:onClick="fadeOut"
+            android:text="Value Animator"
+            android:onClick="valueAnimator"
             android:layout_weight="1"/>
         <Button
             android:id="@+id/btn_7"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Fall"
-            android:onClick="fall"
+            android:text="View Animation"
+            android:onClick="viewAnimation"
             android:layout_weight="1"/>
         <Button
             android:id="@+id/btn_8"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="Value Animator"
-            android:onClick="strechAndColor"
+            android:onClick="startValueAnimator"
             android:layout_weight="1"/>
 
     </LinearLayout>
