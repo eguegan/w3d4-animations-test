@@ -7,6 +7,8 @@ import android.animation.AnimatorSet;
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.content.Intent;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,7 +17,10 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.BounceInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
 
 public class MainActivity extends AppCompatActivity {
     private Button mButtonFade;
@@ -25,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private Button mButtonMultiXml;
     private Button mButtonValueAnimator;
     private Button mButtonViewAnimation;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +43,10 @@ public class MainActivity extends AppCompatActivity {
         mButtonMultiXml = (Button) findViewById(R.id.btn_5);
         mButtonValueAnimator = (Button) findViewById(R.id.btn_6);
         mButtonViewAnimation = (Button) findViewById(R.id.btn_7);
+
+        ImageView mImageView = (ImageView) findViewById(R.id.imgs_gif);
+
+        Glide.with(this).load(R.raw.cat).asGif().into(mImageView);
     }
 
     public void fadeOut(View view) {
@@ -138,5 +148,35 @@ public class MainActivity extends AppCompatActivity {
         });
         // start the animation
         mButtonViewAnimation.startAnimation(animFadeOut);
+    }
+
+    public void activityTransition(View view) {
+        Intent i = new Intent(MainActivity.this, SecondActivity.class);
+        startActivity(i);
+        overridePendingTransition(R.anim.right_in, R.anim.left_out);
+    }
+
+    public void fragmentOne(View view) {
+        BlankFragment newFragment = new BlankFragment();
+        // Create the transaction
+        FragmentTransaction fts = getSupportFragmentManager().beginTransaction();
+        // Configure the "in" and "out" animation files
+        fts.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
+        // Perform the fragment replacement
+        fts.replace(R.id.fragment_container, newFragment, "fragment");
+        // Start the animated transition.
+        fts.commit();
+    }
+
+    public void fragmentTwo(View view) {
+        SecondFragment newFragment = new SecondFragment();
+        // Create the transaction
+        FragmentTransaction fts = getSupportFragmentManager().beginTransaction();
+        // Configure the "in" and "out" animation files
+        fts.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
+        // Perform the fragment replacement
+        fts.replace(R.id.fragment_container, newFragment, "fragment");
+        // Start the animated transition.
+        fts.commit();
     }
 }
